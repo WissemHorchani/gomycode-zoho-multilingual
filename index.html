@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOMYCODE - Course Registration System</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #667eea;
+            text-align: center;
+            margin: 40px 0 20px;
+        }
+        
+        .status-box {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+        
+        .status-box h3 {
+            color: #2e7d32;
+            margin-top: 0;
+        }
+        
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .test-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            background: #f9f9f9;
+            transition: all 0.3s;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .country-flag {
+            font-size: 30px;
+            margin-right: 10px;
+        }
+        
+        .test-card h3 {
+            display: flex;
+            align-items: center;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .test-link {
+            display: block;
+            padding: 10px 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 10px;
+            transition: transform 0.2s;
+        }
+        
+        .test-link:hover {
+            transform: scale(1.05);
+        }
+        
+        .url-example {
+            background: #f4f4f4;
+            padding: 8px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 5px 0;
+            word-break: break-all;
+        }
+        
+        .instructions {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .instructions h3 {
+            color: #e65100;
+            margin-top: 0;
+        }
+        
+        .instructions ol {
+            margin-left: 20px;
+        }
+        
+        .instructions li {
+            margin: 10px 0;
+        }
+        
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #d63384;
+        }
+        
+        .logo {
+            text-align: center;
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://gomycode.com/tn/wp-content/uploads/sites/26/2023/05/Logotype-1.svg" 
+                 alt="GOMYCODE" 
+                 style="height: 60px; width: auto; margin-bottom: 10px;">
+        </div>
+        <p class="subtitle">Course Registration System</p>
+        
+        <h1>🎯 Course Registration System with Smart Filtering</h1>
+        
+        <div class="status-box">
+            <h3>✅ System Features</h3>
+            <ul>
+                <li><strong>No iframe:</strong> Form is directly embedded in each course page</li>
+                <li><strong>Clean URLs:</strong> <code>/[country]/[language]/courses/[track]/</code></li>
+                <li><strong>Automatic detection:</strong> Country and language detected from URL</li>
+                <li><strong>Smart filtering:</strong> Only shows hackerspaces for the detected country</li>
+                <li><strong>Language support:</strong> Only English (en) and French (fr) supported</li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 How It Works</h3>
+            <ol>
+                <li>Each course page has a URL format: <code>/[country]/[language]/courses/[track]/</code></li>
+                <li>The system detects the <strong>country</strong> (e.g., TN) and <strong>language</strong> (e.g., fr) from the URL</li>
+                <li>The system automatically personalizes content:
+                    <ul>
+                        <li><strong>Course info:</strong> Title and subtitle based on track</li>
+                        <li><strong>Location:</strong> Country name displayed in header</li>
+                        <li><strong>Hackerspaces:</strong> Filtered to show only relevant locations</li>
+                        <li><strong>Language:</strong> Form translated to French or English</li>
+                    </ul>
+                </li>
+                <li>Users see a localized form with relevant options only</li>
+            </ol>
+        </div>
+        
+        <h2>🌍 Test Course Pages by Country & Language</h2>
+        
+        <div class="test-grid">
+            <!-- Tunisia French -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇹🇳</span> Tunisia (French)</h3>
+                <div class="url-example">/tn/fr/courses/ux-ui-design/</div>
+                <p><strong>Shows:</strong> Tunisia hackerspaces only</p>
+                <p><strong>Language:</strong> French form labels</p>
+                <a href="/tn/fr/courses/ux-ui-design/" target="_blank" class="test-link">
+                    Test UX/UI Design - Tunisia FR
+                </a>
+            </div>
+            
+            <!-- Morocco French -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇲🇦</span> Morocco (French)</h3>
+                <div class="url-example">/ma/fr/courses/data-scientist/</div>
+                <p><strong>Shows:</strong> Morocco hackerspaces only</p>
+                <p><strong>Language:</strong> French form labels</p>
+                <a href="/ma/fr/courses/data-scientist/" target="_blank" class="test-link">
+                    Test Data Science - Morocco FR
+                </a>
+            </div>
+            
+            <!-- Algeria French -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇩🇿</span> Algeria (French)</h3>
+                <div class="url-example">/dz/fr/courses/cybersecurity/</div>
+                <p><strong>Shows:</strong> Algeria hackerspaces only</p>
+                <p><strong>Language:</strong> French form labels</p>
+                <a href="/dz/fr/courses/cybersecurity/" target="_blank" class="test-link">
+                    Test Cybersecurity - Algeria FR
+                </a>
+            </div>
+            
+            <!-- Senegal French -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇸🇳</span> Senegal (French)</h3>
+                <div class="url-example">/sn/fr/courses/web-development/</div>
+                <p><strong>Shows:</strong> Senegal hackerspaces only</p>
+                <p><strong>Language:</strong> French form labels</p>
+                <a href="/sn/fr/courses/web-development/" target="_blank" class="test-link">
+                    Test Web Dev - Senegal FR
+                </a>
+            </div>
+            
+            <!-- Nigeria English -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇳🇬</span> Nigeria (English)</h3>
+                <div class="url-example">/ng/en/courses/software-developer/</div>
+                <p><strong>Shows:</strong> Nigeria hackerspaces only</p>
+                <p><strong>Language:</strong> English form labels</p>
+                <a href="/ng/en/courses/software-developer/" target="_blank" class="test-link">
+                    Test Software Dev - Nigeria EN
+                </a>
+            </div>
+            
+            <!-- Ivory Coast French -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇨🇮</span> Ivory Coast (French)</h3>
+                <div class="url-example">/ci/fr/courses/graphic-design/</div>
+                <p><strong>Shows:</strong> Ivory Coast hackerspaces only</p>
+                <p><strong>Language:</strong> French form labels</p>
+                <a href="/ci/fr/courses/graphic-design/" target="_blank" class="test-link">
+                    Test Graphic Design - Ivory Coast FR
+                </a>
+            </div>
+            
+            <!-- Egypt English -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇪🇬</span> Egypt (English)</h3>
+                <div class="url-example">/eg/en/courses/machine-learning/</div>
+                <p><strong>Shows:</strong> Egypt hackerspaces only</p>
+                <p><strong>Language:</strong> English form labels</p>
+                <a href="/eg/en/courses/machine-learning/" target="_blank" class="test-link">
+                    Test Machine Learning - Egypt EN
+                </a>
+            </div>
+            
+            <!-- Kenya English -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇰🇪</span> Kenya (English)</h3>
+                <div class="url-example">/ke/en/courses/devops/</div>
+                <p><strong>Shows:</strong> Kenya hackerspaces only</p>
+                <p><strong>Language:</strong> English form labels</p>
+                <a href="/ke/en/courses/devops/" target="_blank" class="test-link">
+                    Test DevOps - Kenya EN
+                </a>
+            </div>
+            
+            <!-- Jordan English -->
+            <div class="test-card">
+                <h3><span class="country-flag">🇯🇴</span> Jordan (English)</h3>
+                <div class="url-example">/jo/en/courses/ai-introduction/</div>
+                <p><strong>Shows:</strong> Jordan hackerspaces only</p>
+                <p><strong>Language:</strong> English form labels</p>
+                <a href="/jo/en/courses/ai-introduction/" target="_blank" class="test-link">
+                    Test AI - Jordan EN
+                </a>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>🔍 Testing Instructions</h3>
+            <ol>
+                <li>Click on any test link above to open a course page</li>
+                <li>Open browser console (F12) to see debug information</li>
+                <li>Check that:
+                    <ul>
+                        <li>The form labels are in the correct language (French or English)</li>
+                        <li>The hackerspaces dropdown only shows options for that country</li>
+                        <li>A green indicator appears showing the detected country</li>
+                    </ul>
+                </li>
+            </ol>
+            <p><strong>Console Commands for Testing:</strong></p>
+            <ul>
+                <li><code>SmartFilter.parseURL()</code> - See detected country, language, and track</li>
+                <li><code>SmartFilter.translateForm('fr')</code> - Force French translation</li>
+                <li><code>SmartFilter.translateForm('en')</code> - Force English translation</li>
+                <li><code>SmartFilter.filterHackerspaces('TN')</code> - Force Tunisia hackerspaces</li>
+                <li><code>SmartFilter.test()</code> - Run full test with current URL</li>
+            </ul>
+            
+            <p><strong>Technical Notes:</strong></p>
+            <ul>
+                <li>Each course page adapts its content based on the URL path</li>
+                <li>Form submission uses modern web standards</li>
+                <li>Responsive design works on desktop, tablet, and mobile devices</li>
+            </ul>
+        </div>
+        
+        <div class="status-box" style="background: #e3f2fd; border-color: #2196f3;">
+            <h3 style="color: #1565c0;">📂 System Architecture</h3>
+            <ul style="margin: 10px 0;">
+                <li><code>/assets/css/styles.css</code> - Styles for all pages</li>
+                <li><code>/assets/js/smart-filter.js</code> - Smart filtering and translation</li>
+                <li><code>/assets/js/course.js</code> - Course management and form handling</li>
+                <li><code>/[country]/[lang]/courses/[track]/index.html</code> - Course pages</li>
+                <li>Each course page contains the Zoho form directly (no iframe)</li>
+            </ul>
+        </div>
+        
+        <div class="status-box" style="background: #fce4ec; border-color: #e91e63;">
+            <h3 style="color: #c2185b;">🎯 Key Benefits</h3>
+            <ul style="margin: 10px 0;">
+                <li><strong>Clean URLs:</strong> No query parameters or iframe URLs</li>
+                <li><strong>Better SEO:</strong> Form content is part of the page</li>
+                <li><strong>Better UX:</strong> Seamless integration with page design</li>
+                <li><strong>Automatic localization:</strong> Based on URL structure</li>
+                <li><strong>Easy maintenance:</strong> Centralized assets and logic</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

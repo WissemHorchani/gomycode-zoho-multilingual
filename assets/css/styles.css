@@ -1,0 +1,311 @@
+/* GOMYCODE Course Registration - Shared Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    min-height: 100vh;
+    line-height: 1.6;
+    color: #334155;
+}
+
+.header {
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.logo img {
+    height: 45px;
+    width: auto;
+}
+
+.nav-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+    color: #64748b;
+}
+
+.main-content {
+    padding: 60px 0;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin-bottom: 16px;
+    letter-spacing: -0.025em;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+}
+
+.form-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 40px;
+    text-align: center;
+}
+
+.form-header h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+}
+
+.form-content {
+    padding: 0;
+}
+
+/* Enhanced Zoho Form Styles */
+.wf_customMessageBox{ 
+    font-family: inherit; 
+    color: #059669; 
+    background: #ecfdf5; 
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+    max-width: 90%; 
+    width: max-content; 
+    word-break: break-word; 
+    z-index: 11000; 
+    border-radius: 12px; 
+    border: 1px solid #10b981; 
+    min-width: 100px; 
+    padding: 16px 24px; 
+    display: flex; 
+    align-items: center; 
+    position: fixed; 
+    top: 30px; 
+    left: 50%; 
+    transform: translate(-50%, 0); 
+}
+
+.wf_customCircle{ 
+    position: relative; 
+    background-color: #10b981; 
+    border-radius: 100%; 
+    width: 24px; 
+    height: 24px; 
+    flex: none; 
+    margin-right: 12px; 
+}
+
+.wf_customCheckMark{ 
+    box-sizing: unset !important; 
+    position: absolute; 
+    transform: rotate(45deg)translate(-50%, -50%); 
+    left: 7px; 
+    top: 11px; 
+    height: 10px; 
+    width: 4px; 
+    border-bottom: 3px solid #fff; 
+    border-right: 3px solid #fff; 
+}
+
+#crmWebToEntityForm.zcwf_lblLeft{ 
+    width: 100%; 
+    padding: 40px; 
+    margin: 0 auto; 
+    box-sizing: border-box; 
+    background: white;
+}
+
+#crmWebToEntityForm.zcwf_lblLeft *{ 
+    box-sizing: border-box; 
+}
+
+#crmWebToEntityForm {
+    text-align: left; 
+}
+
+#crmWebToEntityForm *{ 
+    direction: ltr; 
+}
+
+.zcwf_lblLeft .zcwf_title{ 
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 32px;
+    text-align: center;
+    padding: 0;
+}
+
+.zcwf_lblLeft .zcwf_row {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.zcwf_lblLeft .zcwf_col_lab{ 
+    width: 100%;
+    font-weight: 500;
+    color: #374151;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    float: none;
+}
+
+.zcwf_lblLeft .zcwf_col_fld{ 
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    float: none;
+    position: relative;
+}
+
+.zcwf_lblLeft .zcwf_col_fld input[type=text], 
+.zcwf_lblLeft .zcwf_col_fld input[type=email], 
+.zcwf_lblLeft .zcwf_col_fld textarea{ 
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.2s ease;
+    background: white;
+    font-family: inherit;
+}
+
+.zcwf_lblLeft .zcwf_col_fld input:focus,
+.zcwf_lblLeft .zcwf_col_fld select:focus,
+.zcwf_lblLeft .zcwf_col_fld textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.zcwf_lblLeft .zcwf_col_fld_slt{ 
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.zcwf_lblLeft .zcwf_row:after, 
+.zcwf_lblLeft .zcwf_col_fld:after{ 
+    content: none;
+}
+
+.zcwf_lblLeft .formsubmit{ 
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    border: none;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+    margin: 24px 0 0 0;
+}
+
+.zcwf_lblLeft .formsubmit:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 15px -3px rgba(102, 126, 234, 0.3);
+}
+
+.zcwf_lblLeft .zcwf_button[type="reset"]{ 
+    background: #f8fafc;
+    color: #64748b;
+    border: 2px solid #e2e8f0;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-left: 12px;
+}
+
+.zcwf_lblLeft .zcwf_button[type="reset"]:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+.required-indicator {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.1rem;
+    }
+    
+    .form-header {
+        padding: 32px 24px;
+    }
+    
+    .form-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    #crmWebToEntityForm.zcwf_lblLeft {
+        padding: 32px 24px;
+    }
+    
+    .container {
+        padding: 0 16px;
+    }
+    
+    .main-content {
+        padding: 40px 0;
+    }
+}
