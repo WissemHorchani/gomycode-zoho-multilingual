@@ -173,9 +173,20 @@ $(document).ready(function() {
         
         // Reset form after delay
         setTimeout(() => {
-            document.getElementById('webform6890678000085288001').reset();
+            // Clear all form fields manually
+            const form = document.getElementById('webform6890678000085288001');
+            const inputs = form.querySelectorAll('input[type="text"], input[type="email"], select');
+            inputs.forEach(input => {
+                if (input.type === 'select-one') {
+                    input.selectedIndex = 0;
+                } else if (input.name !== 'xnQsjsdp' && input.name !== 'xmIwtLD' && input.name !== 'actionType' && input.name !== 'returnURL' && input.name !== 'CONTACTCF329') {
+                    input.value = '';
+                }
+            });
             // Remove iframe
-            document.body.removeChild(iframe);
+            if (document.body.contains(iframe)) {
+                document.body.removeChild(iframe);
+            }
         }, 2000);
         
         return false;
