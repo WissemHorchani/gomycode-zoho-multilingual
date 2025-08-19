@@ -4,43 +4,53 @@
  * Uses jQuery 3.7.1 Slim
  */
 
+
 // Course configuration
 const COURSES = {
     'ux-ui-design': {
         title: 'UX & UI Design Course',
-        subtitle: 'Become a User Interface and User Experience Designer'
+        subtitle: 'Become a User Interface and User Experience Designer',
+        product: 'UX & UI Design'
     },
     'data-scientist': {
         title: 'Data Science Course',
-        subtitle: 'Master data analysis and Machine Learning'
+        subtitle: 'Master data analysis and Machine Learning',
+        product: 'Data Scientist Bootcamp'
     },
     'software-developer': {
         title: 'Software Developer Bootcamp',
-        subtitle: 'Become a professional Full-Stack Developer'
+        subtitle: 'Become a professional Full-Stack Developer',
+        product: 'Software Developer Bootcamp'
     },
     'cybersecurity': {
         title: 'Cybersecurity Course',
-        subtitle: 'Protect systems and data'
+        subtitle: 'Protect systems and data',
+        product: 'Cyber Security Bootcamp: Certified CompTIA Security+ 701'
     },
     'web-development': {
         title: 'Web Development',
-        subtitle: 'Create modern and responsive websites'
+        subtitle: 'Create modern and responsive websites',
+        product: 'Web Development Essentials'
     },
     'graphic-design': {
         title: 'Graphic Design',
-        subtitle: 'Create professional visuals with Adobe'
+        subtitle: 'Create professional visuals with Adobe',
+        product: 'Graphic Design - Adobe Certified'
     },
     'devops': {
         title: 'DevOps Bootcamp',
-        subtitle: 'Master development and operations practices'
+        subtitle: 'Master development and operations practices',
+        product: 'The DevOps Bootcamp'
     },
     'machine-learning': {
         title: 'Machine Learning',
-        subtitle: 'Build intelligent systems and algorithms'
+        subtitle: 'Build intelligent systems and algorithms',
+        product: 'Machine learning'
     },
     'ai-introduction': {
         title: 'Introduction to AI',
-        subtitle: 'Discover Artificial Intelligence fundamentals'
+        subtitle: 'Discover Artificial Intelligence fundamentals',
+        product: 'Introduction to Artificial Intelligence'
     }
 };
 
@@ -87,6 +97,12 @@ function init() {
         document.getElementById('course-title').textContent = COURSES[urlInfo.track].title;
         document.getElementById('course-subtitle').textContent = COURSES[urlInfo.track].subtitle;
         document.title = COURSES[urlInfo.track].title + ' - GOMYCODE';
+        
+        // Set the product field in the form
+        const productField = document.querySelector('input[name="CONTACTCF329"]');
+        if (productField) {
+            productField.value = COURSES[urlInfo.track].product;
+        }
     }
     
     // Update location info
@@ -100,8 +116,6 @@ $(document).ready(function() {
     init();
     
     $('#webform6890678000085288001').submit(function(e) {
-        e.preventDefault();
-        
         // Basic validation
         const requiredFields = ['First Name', 'Last Name', 'Email', 'Phone', 'CONTACTCF12', 'CONTACTCF126'];
         const form = document.forms['WebToContacts6890678000085288001'];
@@ -128,30 +142,42 @@ $(document).ready(function() {
             }
         }
         
-        // Submit form using vanilla JavaScript (jQuery Slim doesn't include AJAX)
-        const formData = new FormData(this);
+        e.preventDefault(); // Prevent redirect
         
-        fetch('https://crm.zoho.com/crm/WebToContactForm', {
-            method: 'POST',
-            body: formData,
-            cache: 'no-cache'
-        })
-        .then(response => {
-            const splashdom = document.getElementById('wf_splash');
-            const splashinfodom = document.getElementById('wf_splash_info');
-            if (splashinfodom) {
-                splashinfodom.innerText = 'Thank you for your application!';
-            }
-            if (splashdom) {
-                splashdom.style.display = '';
-                setTimeout(function() {
-                    splashdom.style.display = 'none';
-                }, 5000);
-            }
-            document.getElementById('webform6890678000085288001').reset();
-        })
-        .catch(error => {
-            alert('An error occurred. Please try again.');
-        });
+        // Submit form in hidden iframe to avoid redirect
+        const iframe = document.createElement('iframe');
+        iframe.name = 'hidden_iframe';
+        iframe.style.display = 'none';
+        document.body.appendChild(iframe);
+        
+        // Set form target to iframe
+        this.target = 'hidden_iframe';
+        this.action = 'https://crm.zoho.com/crm/WebToContactForm';
+        this.method = 'POST';
+        
+        // Submit form
+        this.submit();
+        
+        // Show success message immediately
+        const splashdom = document.getElementById('wf_splash');
+        const splashinfodom = document.getElementById('wf_splash_info');
+        if (splashinfodom) {
+            splashinfodom.innerText = 'Thank you for your application! Our team will contact you shortly.';
+        }
+        if (splashdom) {
+            splashdom.style.display = '';
+            setTimeout(function() {
+                splashdom.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Reset form after delay
+        setTimeout(() => {
+            this.reset();
+            // Remove iframe
+            document.body.removeChild(iframe);
+        }, 2000);
+        
+        return false;
     });
 });
