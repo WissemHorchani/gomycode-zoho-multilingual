@@ -116,9 +116,17 @@ $(document).ready(function() {
     init();
     
     $('#webform6890678000085288001').submit(function(e) {
+        console.log('=== FORM SUBMISSION STARTED ===');
+        
         // Basic validation
         const requiredFields = ['First Name', 'Last Name', 'Email', 'Phone', 'CONTACTCF12', 'CONTACTCF126'];
         const form = document.forms['WebToContacts6890678000085288001'];
+        
+        console.log('Form data before submission:');
+        const formData = new FormData(form);
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
         
         for (let field of requiredFields) {
             const fieldObj = form[field];
@@ -156,7 +164,11 @@ $(document).ready(function() {
         this.method = 'POST';
         
         // Submit form
+        console.log('Submitting to:', this.action);
+        console.log('Target:', this.target);
         this.submit();
+        
+        console.log('Form submitted successfully to iframe');
         
         // Show success message immediately
         const splashdom = document.getElementById('wf_splash');
