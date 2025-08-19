@@ -172,8 +172,9 @@ $(document).ready(function() {
         }
         
         // Reset form after delay
+        const formElement = this;
         setTimeout(() => {
-            this.reset();
+            formElement.reset();
             // Remove iframe
             document.body.removeChild(iframe);
         }, 2000);
