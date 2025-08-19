@@ -99,9 +99,11 @@ function init() {
         document.title = COURSES[urlInfo.track].title + ' - GOMYCODE';
         
         // Set the product field in the form
-        const productField = document.querySelector('input[name="CONTACTCF329"]');
+        const productField = document.querySelector('select[name="CONTACTCF329"]');
         if (productField) {
+            // Set the select value
             productField.value = COURSES[urlInfo.track].product;
+            console.log('Setting CONTACTCF329 to:', COURSES[urlInfo.track].product);
         }
     }
     
